@@ -2,17 +2,17 @@ name: Production Build
 on:
   push:
     branches:
-      - master
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
     
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [16.10.0]
         
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@dev
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
