@@ -12,7 +12,7 @@ jobs:
         node-version: [16.10.0]
         
     steps:
-    - uses: actions/checkout@dev
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -24,7 +24,7 @@ jobs:
       run: |
         yarn build
     - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
+      uses: jakejarvis/s3-sync-action@v3
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_PROD_BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
