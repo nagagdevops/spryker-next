@@ -22,12 +22,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Yarn Install
+    - name: npm Install
       run: |
-        yarn install
+        npm install
     - name: Development Build
       run: |
-        yarn build
+        npm start
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
