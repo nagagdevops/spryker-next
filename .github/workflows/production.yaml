@@ -28,14 +28,14 @@ jobs:
     - name: Development Build
       run: |
         yarn build
-    - name: Deploy to S3
+    - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v2
-    - name: Copy files to the test website with the AWS CLI
-      run: |
-        aws s3 sync . s3://sprykerfrontend
-      env:
+      with:
         AWS_S3_BUCKET: ${{ secrets.AWS_PROD_BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1  
         SOURCE_DIR: "build"
+    - name: Deploy static site to S3 bucket
+      run: |
+        aws sync . s3://sprykerfrontend          
