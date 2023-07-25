@@ -30,6 +30,7 @@ jobs:
         yarn build
     - name: Deploy to S3
       uses: aws-actions/configure-aws-credentials@v2
+        aws-region: us-east-1
     - name: Copy files to the test website with the AWS CLI
       run: |
         aws s3 sync . s3://sprykerfrontend
