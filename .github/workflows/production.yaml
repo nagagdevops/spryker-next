@@ -29,7 +29,10 @@ jobs:
       run: |
         yarn build
     - name: Deploy to S3
-      uses: sprykerfrontend/s3-sync-action@main
+      uses: aws-actions/configure-aws-credentials@v2
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        aws s3 sync . s3://sprykerfrontend
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_PROD_BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
