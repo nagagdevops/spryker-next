@@ -1,0 +1,7 @@
+node_modules
+# dotenv environment variables file
+.env.local
+package-lock.json
+
+# next.js build output
+.next/
