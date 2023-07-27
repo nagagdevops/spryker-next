@@ -9,6 +9,8 @@ import BazaarTextField from "components/BazaarTextField";
 import SocialButtons from "./SocialButtons";
 import EyeToggleButton from "./EyeToggleButton";
 import { FlexBox, FlexRowCenter } from "components/flex-box";
+import axios from "axios";
+import { useSession, signIn, signOut } from "next-auth/react"
 const fbStyle = {
   background: "#3B5998",
   color: "white",
@@ -50,7 +52,16 @@ const Login = () => {
     setPasswordVisibility((visible) => !visible);
   }, []);
   const handleFormSubmit = async (values) => {
-    console.log(values);
+    const response = await axios.post('http://glue.de.spryker.local​'+`/token`, {
+        username: values.email,
+        password: values.password,
+        grant_type: "password",
+        clientId:""
+   }, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }});
+   // console.log(response);
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -69,7 +80,7 @@ const Login = () => {
         />
 
         <H1 textAlign="center" mt={1} mb={4} fontSize={16}>
-          Welcome To Bazaar
+          Welcome To Spryker
         </H1>
 
         <BazaarTextField
@@ -155,8 +166,10 @@ const Login = () => {
   );
 };
 const initialValues = {
-  email: "",
+  username: "",
   password: "",
+  grant_type:"password",
+  clientId:""
 };
 const formSchema = yup.object().shape({
   password: yup.string().required("Password is required"),
