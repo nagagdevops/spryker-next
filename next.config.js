@@ -8,6 +8,7 @@ module.exports = {
     theme: "DEFAULT",
     currency: "USD",
   },
+  output: 'export',
 };
 
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({

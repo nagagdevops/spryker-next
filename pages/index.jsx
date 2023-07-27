@@ -14,10 +14,15 @@ import Section8 from "pages-sections/market-2/Section8";
 import Section9 from "pages-sections/market-2/Section9";
 import ShopLayout1 from "components/layouts/ShopLayout1";
 import api from "utils/__api__/market-2";
+import axios from 'axios';
 
 // =======================================================
 
 // =======================================================
+
+axios.defaults.baseURL = 'http://44.208.207.108:8000';
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const Market = (props) => {
   const theme = useTheme();
