@@ -13,6 +13,7 @@ import createEmotionCache from "createEmotionCache";
 import "nprogress/nprogress.css";
 import "simplebar-react/dist/simplebar.min.css";
 import "../src/__server__";
+import { SessionProvider } from "next-auth/react"
 
 //Binding events.
 Router.events.on("routeChangeStart", () => nProgress.start());
@@ -26,7 +27,7 @@ nProgress.configure({
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 const App = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const { Component, emotionCache = clientSideEmotionCache, pageProps: { session, ...pageProps } } = props;
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <CacheProvider value={emotionCache}>
@@ -46,7 +47,9 @@ const App = (props) => {
         <AppProvider>
           <MuiTheme>
             <SnackbarProvider>
+              <SessionProvider session={session}>
               <RTL>{getLayout(<Component {...pageProps} />)}</RTL>
+              </SessionProvider>
             </SnackbarProvider>
           </MuiTheme>
         </AppProvider>
