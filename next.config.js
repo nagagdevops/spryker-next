@@ -6,9 +6,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     // Available on both server and client
     theme: "DEFAULT",
-    currency: "USD",
-   output: 'export',  
+    currency: "USD",  
   },
+  output: 'export',	
 };
 
 module.exports = nextConfig
