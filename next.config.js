@@ -7,49 +7,18 @@ module.exports = {
     // Available on both server and client
     theme: "DEFAULT",
     currency: "USD",
-   output: 'export',
-     images:{
-	     unoptimized: true,
-     },     
+   output: 'export',  
   },
 };
 
+module.exports = nextConfig
 
 
-// const withBundleAnalyzer = require("@next/bundle-analyzer")({
-//   enabled: process.env.ANALYZE === "true",
-// });
 
-// module.exports = withBundleAnalyzer({
-//   i18n,
-//   devIndicators: {},
-//   publicRuntimeConfig: {
-//     // Available on both server and client
-//     theme: "DEFAULT",
-//     currency: "USD",
-//   },
-// });
-//
-//
-//
-/** @type {import('next').NextConfig} */
-//
-//const nextConfig = {
-  //reactStrictMode: true,
-  
-//theme: "DEFAULT",
-
-//currency: "USD",
-//  output: 'export',
-//}
-
-//module.exports = nextConfig
-
-
-//module.exports = {
-  //images: {
-    //unoptimized: true,
- // },
-//};
+module.exports = {
+   images: {
+   unoptimized: true,
+    },
+};
 
 
