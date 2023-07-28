@@ -7,9 +7,14 @@ module.exports = {
     // Available on both server and client
     theme: "DEFAULT",
     currency: "USD",
-   output: 'export',	  
+   output: 'export',
+     images:{
+	     unoptimized: true,
+     },     
   },
 };
+
+
 
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({
 //   enabled: process.env.ANALYZE === "true",
