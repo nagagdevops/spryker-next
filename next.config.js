@@ -7,6 +7,7 @@ module.exports = {
     // Available on both server and client
     theme: "DEFAULT",
     currency: "USD",
+    output: 'export',	  
   },
 };
 
