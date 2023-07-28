@@ -30,6 +30,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   //reactStrictMode: true,
+  theme: "DEFAULT",
+  currency: "USD",
   output: 'export',
 }
 
