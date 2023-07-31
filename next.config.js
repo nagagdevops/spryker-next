@@ -9,6 +9,9 @@ module.exports = {
     currency: "USD",
   },
   output: 'export',
+  images:{
+    unoptimized: true,
+  }
 };
 
 // const withBundleAnalyzer = require("@next/bundle-analyzer")({
