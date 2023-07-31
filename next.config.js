@@ -9,6 +9,9 @@ const nextConfig = {
     currency: "USD",  
   },
   output: 'export',	
+  images:{
+    unoptimized: true,
+  }
 };
 
 module.exports = nextConfig
