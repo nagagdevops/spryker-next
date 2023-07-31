@@ -27,7 +27,7 @@ jobs:
         npm install
     - name: Development Build
       run: |
-        npm run build
+        npm run export
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -39,4 +39,4 @@ jobs:
     - name: Deploy static site to S3 bucket
       run: |
         aws s3 rm s3://sprykerfrontend --recursive
-        aws s3 sync ./.next/server/pages s3://sprykerfrontend 
+        aws s3 sync ./out s3://sprykerfrontend 
