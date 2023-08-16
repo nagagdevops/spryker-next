@@ -52,7 +52,7 @@ const Login = () => {
     setPasswordVisibility((visible) => !visible);
   }, []);
   const handleFormSubmit = async (values) => {
-    const response = await axios.post('https://glue.de.acme-manufacturing.com​'+`/token`, {
+    const response = await axios.post('http://glue.de.acme-manufacturing.com​'+`/token`, {
         username: values.email,
         password: values.password,
         grant_type: "password",
