@@ -1,0 +1,41 @@
+name: Production Build
+on:
+     # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.0.0]
+        
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm Install
+      run: |
+        npm install
+    - name: Development Build
+      run: |
+        npm run build
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-s3-bucket: ${{ secrets.AWS_PROD_BUCKET_NAME }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1  
+        SOURCE_DIR: "build"
+    - name: Deploy static site to S3 bucket
+      run: |
+        aws s3 sync s3://spryker-nextjs  --delete
