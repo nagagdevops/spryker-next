@@ -57,7 +57,7 @@ const Login = () => {
         password: values.password,
         grant_type: "password",
         client_id: "frontend",
-        client_secret: "WvfRxFZ6lXCsS2udwKuIftpn6ZRuFw7m0vUEW62gDudezJkC"
+        client_secret: "qvA6ju2bmgqIvxkkghFPnIYaSO5p1xHDBP5hMPBhQ4F4czZr"
    }, {
     headers: {
       'Content-Type': 'multipart/form-data'
