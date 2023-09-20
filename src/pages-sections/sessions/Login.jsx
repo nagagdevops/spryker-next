@@ -52,12 +52,12 @@ const Login = () => {
     setPasswordVisibility((visible) => !visible);
   }, []);
   const handleFormSubmit = async (values) => {
-    const response = await axios.post('https://glue.acme-manufacturing.com​'+`/token`, {
+    const response = await axios.post('https://glue.de.acme-manufacturing.com​'+`/token`, {
         username: values.email,
         password: values.password,
         grant_type: "password",
         client_id: "frontend",
-        client_secret: "z2aTr32un7PXLPuKvmmqc7RdttMbCvnLvKRr0fogJN7wpFSh"
+        client_secret: "Lp504yO5PW6A0ln16HkcY2CiQZRngqAzW00gx49XlBdGf3Pb"
    }, {
     headers: {
       'Content-Type': 'multipart/form-data'
